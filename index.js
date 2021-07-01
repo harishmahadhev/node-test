@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import router from "./routes/recipe.js";
 import { userRouter } from "./routes/users.js";
 const app = express();
-const PORT = process.env.PORT || 3200;
+const PORT = process.env.PORT || 5000;
 
 // Opened Connection to DB, movieData - db name
 const url = process.env.MONGODB_URI || "mongodb://localhost/movies";
