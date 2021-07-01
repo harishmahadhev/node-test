@@ -1,3 +1,4 @@
+import { Title } from "@material-ui/icons";
 import express from "express";
 import { Recipes } from "../models/recipie.js";
 const router = express.Router();
@@ -17,7 +18,12 @@ router.post("/", async (request, respone) => {
 });
 
 router.get("/", async (request, respone) => {
-  const recipe = await Recipes.find();
+  console.log("before", request.query);
+  if (request.query.title) {
+    request.query.title = new RegExp(`^${request.query.title}`, "i");
+  }
+  console.log("after", request.query);
+  const recipe = await Recipes.find(request.query);
   respone.send(recipe);
 });
 
