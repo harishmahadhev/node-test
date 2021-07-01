@@ -7,9 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3200;
 
 // Opened Connection to DB, movieData - db name
-const url =
-  "mongodb+srv://harishmahadhev:Asdfglkjh_2205@cluster0.7zh7z.mongodb.net/moviesData";
-
+const url = process.env.MONGODB_URI || "mongodb://localhost/movies";
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 const con = mongoose.connection;
 con.on("open", () => console.log("MongoDB is connected"));
